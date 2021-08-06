@@ -1,5 +1,10 @@
 # CalendarDateRangePickerViewController
 
+Modifier: Anil Motwani - anil@atoatechnologies.com
+Added isAscending Bool
+If you want to view months from Maximum date to minimum date, pass isAscending as false
+
+
 [![CI Status](http://img.shields.io/travis/miraan/CalendarDateRangePickerViewController.svg?style=flat)](https://travis-ci.org/miraan/CalendarDateRangePickerViewController)
 [![Version](https://img.shields.io/cocoapods/v/CalendarDateRangePickerViewController.svg?style=flat)](http://cocoapods.org/pods/CalendarDateRangePickerViewController)
 [![License](https://img.shields.io/cocoapods/l/CalendarDateRangePickerViewController.svg?style=flat)](http://cocoapods.org/pods/CalendarDateRangePickerViewController)

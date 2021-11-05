@@ -57,7 +57,7 @@ public class CalendarDateRangePickerViewController: UICollectionViewController {
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(CalendarDateRangePickerViewController.didTapCancel))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(CalendarDateRangePickerViewController.didTapDone))
-        self.navigationItem.rightBarButtonItem?.isEnabled = selectedStartDate != nil && selectedEndDate != nil
+        self.navigationItem.rightBarButtonItem?.isEnabled = selectedStartDate != nil
     }
     
     @objc func didTapCancel() {
@@ -65,8 +65,11 @@ public class CalendarDateRangePickerViewController: UICollectionViewController {
     }
     
     @objc func didTapDone() {
-        if selectedStartDate == nil || selectedEndDate == nil {
+        if selectedStartDate == nil {
             return
+        }
+        if selectedEndDate == nil {
+            selectedEndDate = selectedStartDate
         }
         delegate.didPickDateRange(startDate: selectedStartDate!, endDate: selectedEndDate!)
     }
@@ -157,10 +160,10 @@ extension CalendarDateRangePickerViewController : UICollectionViewDelegateFlowLa
         }
         if selectedStartDate == nil {
             selectedStartDate = cell.date
+            self.navigationItem.rightBarButtonItem?.isEnabled = true
         } else if selectedEndDate == nil {
             if isBefore(dateA: selectedStartDate!, dateB: cell.date!) {
                 selectedEndDate = cell.date
-                self.navigationItem.rightBarButtonItem?.isEnabled = true
             } else {
                 // If a cell before the currently selected start date is selected then just set it as the new start date
                 selectedStartDate = cell.date
